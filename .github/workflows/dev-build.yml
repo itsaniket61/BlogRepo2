@@ -17,7 +17,7 @@ jobs:
         node-version: 18.x
         cache: 'npm'
     - run: npm install
-    - run: vite build
+    - run: npm run build
     - name: Create and checkout deploy branch
       run: |
         git config --global user.email "aniket.sharma.4509@gmail.com"
