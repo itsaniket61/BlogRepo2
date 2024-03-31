@@ -5,7 +5,7 @@
   "devDependencies": {},
   "keywords": [],
   "scripts": {
-    "build": "npm install --prefix ./client && npm run build --prefix ./client && npm install",
+    "build": "npm install --prefix ./client && npm run build --prefix ./client && npm install && vite build",
     "start": "node server.js"
   },
   "author": "",
