@@ -2,16 +2,14 @@
   "name": "server",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
   "keywords": [],
   "scripts": {
-    "build": "cd ./client && npm install && npm install vite --save-dev && vite build",
+    "build": "cd ./client && npm install react-scripts --save-dev && npm install && npm run build",
     "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
- 
   "dependencies": {
     "cloudinary": "^2.0.3",
     "cors": "^2.8.5",
