@@ -5,7 +5,7 @@
   "devDependencies": {},
   "keywords": [],
   "scripts": {
-    "build": "cd ./client && npm install && vite build",
+    "build": "cd ./client && npm install && && npm install -g create-vite && vite build",
     "start": "node server.js"
   },
   "author": "",
