@@ -24,6 +24,7 @@ jobs:
         git config --global user.name "Aniket Sharma"
         git checkout -b deploy
         git rm -r .
-        git checkout HEAD -- client/build
+        git checkout HEAD -- client/build/*
+        git add .
         git commit -m "Add build artifacts"
         git push origin deploy
