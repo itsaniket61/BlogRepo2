@@ -23,6 +23,7 @@ jobs:
         git config --global user.email "aniket.sharma.4509@gmail.com"
         git config --global user.name "Aniket Sharma"
         git checkout -b deploy
-        git add client/build
+        git rm -r .
+        git checkout HEAD -- client/build
         git commit -m "Add build artifacts"
         git push origin deploy
