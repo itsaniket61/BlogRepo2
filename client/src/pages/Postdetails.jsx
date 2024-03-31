@@ -4,6 +4,7 @@ import { Comment } from "../Comments";
 import { json, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { config } from "../config/config";
 
 export function Postdetails({CommentsArray,setCommentsArray}){
     const[details,setDetails] = useState({})
@@ -16,7 +17,7 @@ export function Postdetails({CommentsArray,setCommentsArray}){
     useEffect(()=>{
         axios({
             method : "get",
-            url : "http://localhost:3000/auth",
+            url : config.backendHost + "/auth",
             headers : {
                 Authorization : localStorage.getItem("token")
             }
@@ -34,7 +35,7 @@ export function Postdetails({CommentsArray,setCommentsArray}){
     useEffect(()=>{
         axios({
             method : "get",
-            url : "http://localhost:3000/post/getPost/"+ id,
+            url : config.backendHost + "/post/getPost/"+ id,
            
         })
         .then((res)=>{
@@ -52,7 +53,7 @@ export function Postdetails({CommentsArray,setCommentsArray}){
         } else{
             axios({
                 method : "post",
-                url : "http://localhost:3000/post/comment/"+ id,
+                url : config.backendHost + "/post/comment/"+ id,
                 headers : {
                     Authorization : localStorage.getItem("token")
                 },
@@ -70,7 +71,7 @@ export function Postdetails({CommentsArray,setCommentsArray}){
     useEffect(()=>{
         axios({
             method : "get",
-            url : "http://localhost:3000/post/getComments/"+ id,
+            url : config.backendHost + "/post/getComments/"+ id,
         }).then((res)=>{
             setCommentsArray(res.data.post[0].Comments)
             
@@ -97,7 +98,7 @@ export function Postdetails({CommentsArray,setCommentsArray}){
                 
             </div>
             <div>
-                <img src={`http://localhost:3000/images/${details.image}`} className="w-full mb-7" alt="" />
+                <img src={`/images/${details.image}`} className="w-full mb-7" alt="" />
             </div>
             <p className="mb-10">
                 {details.description}

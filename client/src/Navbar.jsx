@@ -6,6 +6,7 @@ import { useRecoilState } from "recoil";
 import { useAuth } from "./custom Hooks/useAuth";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { config } from "./config/config";
 
 export function NavBar(){
     const navigate = useNavigate()
@@ -23,7 +24,7 @@ export function NavBar(){
     useEffect(()=>{
             axios({
                 method : "get",
-                url : "http://localhost:3000/auth",
+                url : config.backendHost + "/auth",
                 headers : {
                     Authorization : localStorage.getItem("token")
                 }
@@ -37,7 +38,7 @@ export function NavBar(){
     },[location.pathname])
 
     useEffect(()=>{
-        axios.get("http://localhost:3000/post/searchPost?filter="+search)
+        axios.get(config.backendHost + "/post/searchPost?filter="+search)
         .then((res)=>{
             setPosts(res.data.filteredPosts)
         })

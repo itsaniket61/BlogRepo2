@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { isUserLoggedAtom } from "../atom";
 import { useSetRecoilState } from "recoil";
 import { useAuth } from "../custom Hooks/useAuth";
+import { config } from "../config/config";
 
 export function Signup(){
     const navigate = useNavigate()
@@ -28,7 +29,7 @@ export function Signup(){
     function clickHandler(){
         axios({
             method : "post",
-            url : "http://localhost:3000/user/signup",
+            url : config.backendHost + "/user/signup",
             data : formData
         }).then((res)=>{
             localStorage.setItem("token","Bearer "+ res.data.token)

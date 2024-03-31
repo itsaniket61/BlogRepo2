@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { Loader } from "../Loader/Loader"
 import { useRecoilState } from "recoil"
 import { postAtom } from "../atom"
+import { config } from "../config/config"
 
 export function Home(){
     // const [posts,setPosts] = useState([])
@@ -11,7 +12,7 @@ export function Home(){
     useEffect(()=>{
         axios({
             method : "get",
-            url : "http://localhost:3000/post/allPosts"
+            url : `${config.backendHost}/post/allPosts`
         }).then((res)=>{
             setPosts(res.data.allPosts)
             console.log(res.data)
@@ -38,7 +39,7 @@ function Posts({post}){
     return(
         <>
             <div className="flex-row mt-10 w-9/12 md:flex mx-auto">
-            <img src={`http://localhost:3000/images/${post.image}`} className="md:w-4/12  w-full"  alt="" />
+            <img src={`/images/${post.image}`} className="md:w-4/12  w-full"  alt="" />
             <div className="ml-2">
                 <h1 className="font-bold text-xl">{post.title}</h1>
                 <div className="flex justify-between text-gray-400 text-sm">

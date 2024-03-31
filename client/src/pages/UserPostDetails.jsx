@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../custom Hooks/useAuth";
+import { config } from "../config/config";
 
 
 export function UserPostDetails(){
@@ -16,7 +17,7 @@ export function UserPostDetails(){
     useEffect(()=>{
         axios({
             method : "get",
-            url : "http://localhost:3000/post/getPost/"+ id,
+            url : config.backendHost + "/post/getPost/"+ id,
             headers : {
                 Authorization : localStorage.getItem("token")
             }
@@ -32,7 +33,7 @@ export function UserPostDetails(){
     useEffect(()=>{
         axios({
             method : "get",
-            url : "http://localhost:3000/post/getComments/"+ id,
+            url : config.backendHost + "/post/getComments/"+ id,
         }).then((res)=>{
             setCommentsArray(res.data.post[0].Comments)
             console.log(res.data.post[0].Comments)
@@ -42,7 +43,7 @@ export function UserPostDetails(){
     function deleteHandler(){
         axios({
             method : "delete",
-            url : `http://localhost:3000/post/deletePost/${id}`
+            url : `${config.backendHost}/post/deletePost/${id}`
         })
         .then((res)=>{
             navigate("/profile")
@@ -69,7 +70,7 @@ export function UserPostDetails(){
                 <p className="text-gray-400">Sun Aug 06 2023  18:03:49</p>
             </div>
             <div>
-                <img src={`http://localhost:3000/images/${details.image}`} className="w-full mb-7" alt="" />
+                <img src={`/images/${details.image}`} className="w-full mb-7" alt="" />
             </div>
             <p className="mb-10">
                 {details.description}

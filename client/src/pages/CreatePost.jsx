@@ -4,6 +4,7 @@ import { ImCross } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../custom Hooks/useAuth";
 import { Loader } from "../Loader/Loader";
+import { config } from "../config/config";
 
 export function CreatePost(){
     // useAuth()
@@ -64,7 +65,7 @@ export function CreatePost(){
         sendData.append("category",formData.category)
         axios({
             method:"post",
-            url : "http://localhost:3000/post/create",
+            url : `${config.backendHost}/post/create`,
             headers : {
                 "Authorization" : localStorage.getItem("token"),
                 

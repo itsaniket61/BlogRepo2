@@ -7,7 +7,7 @@ export function useAuth(path1,path2){
     useEffect(()=>{
         axios({
             method : "get",
-            url : "http://localhost:3000/auth",
+            url : config.backendHost + "/auth",
             headers : {
                 Authorization : localStorage.getItem("token")
             }

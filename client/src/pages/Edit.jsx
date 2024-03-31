@@ -3,6 +3,7 @@ import { useState,useEffect} from "react"
 import { ImCross } from "react-icons/im";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../custom Hooks/useAuth";
+import { config } from "../config/config";
 
 export function EditPost(){
     const[formData,setFormData] = useState({
@@ -65,7 +66,7 @@ export function EditPost(){
         sendData.append("category",formData.category)
        axios({
         method : "put",
-        url : `http://localhost:3000/post/updatePost/${id}`,
+        url : `${config.backendHost}/post/updatePost/${id}`,
         data : sendData
        })
        .then((res)=>{

@@ -4,6 +4,7 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../custom Hooks/useAuth"
 import { Loader } from "../Loader/Loader"
+import { config } from "../config/config"
 export function HomeProfile(){
     useAuth("/profile","/register")
     const [userPosts,setUserPosts] = useState([])
@@ -19,7 +20,7 @@ export function HomeProfile(){
     useEffect(()=>{
         axios({
             method : "get",
-            url : "http://localhost:3000/post/profilePosts",
+            url : config.backendHost + "/post/profilePosts",
             headers : {
                 Authorization : localStorage.getItem("token")
             },
@@ -34,7 +35,7 @@ export function HomeProfile(){
     function clickHandler(){
         axios({
             method : "post",
-            url : "http://localhost:3000/user/update",
+            url : config.backendHost + "/user/update",
             headers : {
                 Authorization : localStorage.getItem("token")
             },

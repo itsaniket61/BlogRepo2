@@ -1,11 +1,12 @@
 import axios from "axios";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { config } from "./config/config";
 export function Comment({comt,id,setCommentsArray,showDeleteBtn}){
     function clickHandler(cmtID){
         axios({
             method : "delete",
-            url : `http://localhost:3000/post/deleteComment/${id}/${cmtID}`
+            url : `${config.backendHost}/post/deleteComment/${id}/${cmtID}`
         })
         .then((res)=>{
             setCommentsArray(res.data.msg.Comments)
