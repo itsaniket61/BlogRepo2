@@ -25,6 +25,8 @@ jobs:
         git checkout -b deploy
         git rm -r .
         git checkout HEAD -- client/build/*
+        mv client/build/* .
+        rmdir client/build
         git add .
         git commit -m "Add build artifacts"
         git push origin deploy
