@@ -24,10 +24,12 @@ jobs:
         git config --global user.name "Aniket Sharma"
         git checkout -- package-lock.json
         git checkout -b deploy
-        git rm -r .
-        git checkout HEAD -- client/build/*
-        mv client/build/* .
-        rmdir client/build
-        git add .
+        mkdir -p deploy_folder                   # Create a temporary folder to store build artifacts
+        git checkout HEAD -- client/build/*     # Checkout only contents of build folder
+        mv client/build/* deploy_folder/        # Move contents to the temporary folder
+        git rm -r client/build/*                 # Remove the contents from the repository
+        mv deploy_folder/* .                     # Move contents back to the repository root
+        rmdir deploy_folder                      # Remove the temporary folder
+        git add .                                # Add the changes
         git commit -m "Add build artifacts"
         git push origin deploy
